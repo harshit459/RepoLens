@@ -99,22 +99,58 @@
 # print(result)
 
 
-from backend.app.parsers.python_parser import PythonParser
+# from backend.app.parsers.python_parser import PythonParser
 
 
-parser = PythonParser()
+# parser = PythonParser()
+
+# code = """
+# def authenticate(username, password):
+#     return True
+
+# class PaymentService:
+
+#     def process_payment(self, amount):
+#         return amount
+
+#     def refund_payment(self, transaction_id):
+#         return True
+# """
+
+# result = parser.parse(code)
+
+# print(result)
+
+
+from backend.app.parsers.javascript_parser import JavaScriptParser
+
+parser = JavaScriptParser()
 
 code = """
-def authenticate(username, password):
-    return True
+function authenticate(username, password) {
+    return true;
+}
 
-class PaymentService:
+class PaymentService {
 
-    def process_payment(self, amount):
-        return amount
+    processPayment(amount) {
+        return amount;
+    }
 
-    def refund_payment(self, transaction_id):
-        return True
+    refundPayment(transactionId) {
+        return true;
+    }
+}
+
+const greet = (name) => {
+    return "Hello " + name;
+};
+
+const add = (a, b) => a + b;
+
+const multiply = (a, b) => {
+    return a * b;
+};
 """
 
 result = parser.parse(code)
